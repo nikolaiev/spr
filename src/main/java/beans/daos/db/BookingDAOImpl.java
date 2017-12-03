@@ -11,12 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 20/2/16
- * Time: 9:00 PM
- */
 @Repository("bookingDAO")
 public class BookingDAOImpl extends AbstractDAO implements BookingDAO {
 

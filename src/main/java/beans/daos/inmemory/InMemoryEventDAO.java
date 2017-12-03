@@ -11,12 +11,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/3/2016
- * Time: 10:41 AM
- */
 @Repository("inMemoryEventDAO")
 public class InMemoryEventDAO implements EventDAO {
 

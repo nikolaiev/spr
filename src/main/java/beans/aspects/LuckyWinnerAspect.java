@@ -17,12 +17,6 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/11/2016
- * Time: 10:23 AM
- */
 @Aspect
 @Component
 @PropertySource({"classpath:aspects/aspects.properties"})

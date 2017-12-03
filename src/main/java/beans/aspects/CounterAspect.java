@@ -11,12 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/11/2016
- * Time: 10:14 AM
- */
 @Aspect
 @Component
 public class CounterAspect {

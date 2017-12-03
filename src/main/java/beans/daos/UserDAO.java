@@ -5,12 +5,6 @@ import beans.models.User;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/2/2016
- * Time: 11:38 AM
- */
 public interface UserDAO {
 
     User create(User user);

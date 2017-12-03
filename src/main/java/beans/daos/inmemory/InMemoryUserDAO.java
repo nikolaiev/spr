@@ -7,12 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/2/2016
- * Time: 11:41 AM
- */
 @Repository("inMemoryUserDAO")
 public class InMemoryUserDAO implements UserDAO {
 
