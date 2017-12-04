@@ -1,6 +1,6 @@
 package beans.services;
 
-import beans.WebApplication;
+
 import beans.configuration.TestUserServiceConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
@@ -25,14 +25,8 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 8:02 PM
- */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebApplication.class, DataSourceConfiguration.class, DbSessionFactory.class, TestUserServiceConfiguration.class})
+@ContextConfiguration(classes = { DataSourceConfiguration.class, DbSessionFactory.class, TestUserServiceConfiguration.class})
 @Transactional
 public class UserServiceImplTest {
 
