@@ -1,0 +1,18 @@
+{
+  "events":[
+    {
+      "rate":"MID",
+      "name":"Event1",
+      "date_time":"10-10-1996",
+      "base_price":100,
+      "auditorium_name":"Red hall"
+    },
+    {
+      "rate":"LOW",
+      "name":"Event12",
+      "date_time":"11-01-1986",
+      "base_price":150,
+      "auditorium_name":"Yellow hall"
+    }
+  ]
+}
