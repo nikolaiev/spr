@@ -54,12 +54,11 @@ public class BatchController {
 
 
         try {
-            // Get the file and save it somewhere
             InputStream inputStream = file.getInputStream();
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject)jsonParser.parse(
                     new InputStreamReader(inputStream, "UTF-8"));
-            System.out.println(jsonObject.toJSONString());
+
             processBatchUsers(jsonObject);
 
             redirectAttributes.addFlashAttribute("message",
@@ -83,18 +82,19 @@ public class BatchController {
 
         try {
 
-            // Get the file and save it somewhere
-            byte[] bytes = file.getBytes();
-            //Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            //Files.write(path, bytes);
+            InputStream inputStream = file.getInputStream();
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject)jsonParser.parse(
+                    new InputStreamReader(inputStream, "UTF-8"));
+
+            processBatchEvents(jsonObject);
 
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException |ParseException  e) {
+            throw new BatchParseException(e.getMessage());
         }
-
         return "redirect:/batch/uploadStatus";
     }
 
@@ -136,8 +136,8 @@ public class BatchController {
 
             Rate rate = Rate.valueOf((String) eventJson.get("rate"));
             String name = (String) eventJson.get("name");
-            String dateTime = (String) eventJson.get("date_time");
             Double basePrice = Double.valueOf((String) eventJson.get("base_price"));
+            String dateTime = (String) eventJson.get("date_time");
             LocalDate parsedDateTime  = LocalDate.parse(dateTime , formatter);
 
             Event newEvent = new Event(name,rate,basePrice,parsedDateTime.atStartOfDay(),auditorium);

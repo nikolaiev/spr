@@ -13,4 +13,11 @@ public class ControllersAdvice{
 
         return "exception";
     }
+
+    @ExceptionHandler(Exception.class)
+    public String showErrorPageGlobal(Model model,Exception e){
+        System.out.println(e.getMessage());
+        model.addAttribute("message","Server error");
+        return "exception";
+    }
 }
