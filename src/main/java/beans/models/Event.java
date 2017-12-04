@@ -1,10 +1,12 @@
 package beans.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class Event {
 
     private long          id;
@@ -14,8 +16,6 @@ public class Event {
     private LocalDateTime dateTime;
     private Auditorium    auditorium;
 
-    public Event() {
-    }
 
     public Event(String name, Rate rate, double basePrice, LocalDateTime dateTime, Auditorium auditorium) {
         this(-1, name, rate, basePrice, dateTime, auditorium);

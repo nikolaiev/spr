@@ -1,6 +1,6 @@
 package beans.services;
 
-import beans.configuration.AppConfiguration;
+import beans.WebApplication;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
 import beans.daos.mocks.DBAuditoriumDAOMock;
@@ -26,7 +26,7 @@ import static junit.framework.Assert.assertEquals;
  * Time: 1:23 PM
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class, beans.configuration.TestAuditoriumConfiguration.class})
+@ContextConfiguration(classes = {WebApplication.class, DataSourceConfiguration.class, DbSessionFactory.class, beans.configuration.TestAuditoriumConfiguration.class})
 @Transactional
 public class AuditoriumServiceImplTest {
 

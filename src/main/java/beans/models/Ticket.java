@@ -1,12 +1,14 @@
 package beans.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import util.CsvUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class Ticket {
 
     private long          id;
@@ -15,9 +17,6 @@ public class Ticket {
     private String        seats;
     private User          user;
     private Double        price;
-
-    public Ticket() {
-    }
 
     public Ticket(Event event, LocalDateTime dateTime, List<Integer> seats, User user, double price) {
         this(-1, event, dateTime, seats, user, price);

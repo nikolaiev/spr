@@ -1,7 +1,7 @@
 package beans.aspects;
 
 import beans.aspects.mocks.LuckyWinnerAspectMock;
-import beans.configuration.AppConfiguration;
+import beans.WebApplication;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
 import beans.daos.mocks.BookingDAOBookingMock;
@@ -34,7 +34,7 @@ import static junit.framework.Assert.assertEquals;
  * Time: 7:20 PM
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class,
+@ContextConfiguration(classes = {WebApplication.class, DataSourceConfiguration.class, DbSessionFactory.class,
                                  beans.configuration.TestAspectsConfiguration.class})
 @Transactional
 public class TestLuckyWinnerAspect {

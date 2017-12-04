@@ -1,12 +1,14 @@
 package beans.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import util.CsvUtil;
 
 import java.util.List;
 
 
 @Data
+@NoArgsConstructor
 public class Auditorium {
 
     private long   id;

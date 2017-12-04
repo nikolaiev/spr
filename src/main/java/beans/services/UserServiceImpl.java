@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public User getUserByEmail(String email) {
-        return userDAO.getByEmail(email);
-    }
+            return userDAO.getByEmail(email);
+        }
 
     public List<User> getUsersByName(String name) {
         return userDAO.getAllByName(name);

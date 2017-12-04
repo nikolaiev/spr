@@ -1,16 +1,15 @@
 package beans.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Booking {
 
     private long   id;
     private User   user;
     private Ticket ticket;
-
-    public Booking() {
-    }
 
     public Booking(User user, Ticket ticket) {
         this(-1, user, ticket);

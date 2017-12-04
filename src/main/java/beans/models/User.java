@@ -1,19 +1,18 @@
 package beans.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
 public class User {
 
     private long      id;
     private String    email;
     private String    name;
     private LocalDate birthday;
-
-    public User() {
-    }
 
     public User(long id, String email, String name, LocalDate birthday) {
         this.id = id;
