@@ -1,6 +1,6 @@
 package beans.controllers;
 
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Auditorium;
 import beans.models.Event;
 import beans.services.EventService;
@@ -27,7 +27,7 @@ public class EventController {
         Event event=service.getEvent(name, auditorium, dateTime);
 
         if(event==null)
-            throw new ObjectNotFoundException("Event was not founded");
+            throw new MyObjectNotFoundException("Event was not founded");
 
         model.addAttribute("event",event);
 

@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
         this.ticketDAO= ticketDAO;
     }
 
+    //used in tests
     public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
         this.ticketDAO=null;

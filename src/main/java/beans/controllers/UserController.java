@@ -1,7 +1,7 @@
 package beans.controllers;
 
 
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.User;
 import beans.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
         User user=service.getById(id);
 
         if(user==null)
-            throw new ObjectNotFoundException("User was not founded");
+            throw new MyObjectNotFoundException("User was not founded");
 
         model.addAttribute("user",user);
 
@@ -38,7 +38,7 @@ public class UserController {
 
         User user=service.getUserByEmail(email);
         if(user==null)
-            throw new ObjectNotFoundException("User was not founded");
+            throw new MyObjectNotFoundException("User was not founded");
 
         model.addAttribute("user",user);
 

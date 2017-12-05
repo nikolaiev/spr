@@ -1,6 +1,6 @@
 package beans.controllers;
 
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Auditorium;
 import beans.services.AuditoriumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class AuditoriumController {
         Auditorium auditorium = service.getByName(name);
 
         if(auditorium==null)
-            throw new ObjectNotFoundException("Auditorium was not founded");
+            throw new MyObjectNotFoundException("Auditorium was not founded");
 
         model.addAttribute("auditorium",auditorium );
 

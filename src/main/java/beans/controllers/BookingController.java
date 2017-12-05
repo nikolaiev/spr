@@ -1,6 +1,6 @@
 package beans.controllers;
 
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
@@ -11,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Controller
@@ -37,7 +35,7 @@ public class BookingController {
                                        @RequestParam("user_id") Long userId){
         User user=userService.getById(userId);
         if(user==null){
-            throw new ObjectNotFoundException("User not found");
+            throw new MyObjectNotFoundException("User not found");
         }
         return bookingService.getTicketPrice(event,auditoriumName,dateTime,seats,user);
     }
@@ -62,13 +60,13 @@ public class BookingController {
         User user=userService.getById(userId);
 
         if(user==null){
-            throw new ObjectNotFoundException("User not found "+userId);
+            throw new MyObjectNotFoundException("User not found "+userId);
         }
 
         Event event=eventService.getById(event_id);
 
         if(event==null){
-            throw new ObjectNotFoundException("Event not found "+event_id);
+            throw new MyObjectNotFoundException("Event not found "+event_id);
         }
 
         Ticket ticket=new Ticket(event,LocalDateTime.now(),seatsList,user,event.getBasePrice());
@@ -83,7 +81,7 @@ public class BookingController {
         Event event=eventService.getById(eventId);
 
         if(event==null){
-            throw new ObjectNotFoundException("Event not found "+eventId);
+            throw new MyObjectNotFoundException("Event not found "+eventId);
         }
 
         List<User> users=userService.getAll();

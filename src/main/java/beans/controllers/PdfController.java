@@ -1,6 +1,6 @@
 package beans.controllers;
 
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Ticket;
 import beans.models.User;
 import beans.services.BookingService;
@@ -82,7 +82,7 @@ public class PdfController {
         Ticket ticket= ticketService.getTicketById(ticket_id);
 
         if(ticket==null){
-            throw new ObjectNotFoundException("Ticket not found "+ticket_id);
+            throw new MyObjectNotFoundException("Ticket not found "+ticket_id);
         }
 
         Path pdfPath = generatorUtil.createPdf(TEMPLATE_SIMPLE_TICKET, new HashMap<String, Ticket>() {{
@@ -99,7 +99,7 @@ public class PdfController {
         User user=userService.getById(userId);
 
         if(user==null){
-            throw new ObjectNotFoundException("User not found "+userId);
+            throw new MyObjectNotFoundException("User not found "+userId);
         }
 
         List<Ticket> ticketsByUser = ticketService.getTicketsByUser(userId);

@@ -3,7 +3,7 @@ package beans.services;
 import beans.daos.BookingDAO;
 import beans.daos.TicketDAO;
 import beans.daos.UserDAO;
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Ticket;
 import beans.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class TicketServiceImpl implements TicketService {
         User user=userDAO.get(userId);
 
         if(user==null){
-            throw  new ObjectNotFoundException("User not found "+userId);
+            throw  new MyObjectNotFoundException("User not found "+userId);
         }
         return bookingDAO.getTickets(user);
     }

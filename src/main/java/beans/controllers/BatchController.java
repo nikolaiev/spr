@@ -1,7 +1,7 @@
 package beans.controllers;
 
 import beans.exceptions.BatchParseException;
-import beans.exceptions.ObjectNotFoundException;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.Auditorium;
 import beans.models.Event;
 import beans.models.Rate;
@@ -23,9 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -136,7 +133,7 @@ public class BatchController {
             Auditorium auditorium =auditoriumService.getByName(auditoriumName);
 
             if(auditorium==null){
-                throw new ObjectNotFoundException("Auditorium with name "+ auditoriumName+ " not found");
+                throw new MyObjectNotFoundException("Auditorium with name "+ auditoriumName+ " not found");
             }
 
             Rate rate = Rate.valueOf((String) eventJson.get("rate"));

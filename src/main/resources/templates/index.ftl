@@ -15,3 +15,5 @@ Get specific filtered tickets <a href="/pdf/events?event=The%20revenant&auditori
 Users UI <a href="/users/all/">All Users</a>
 <br><br>
 Events UI <a href="/events/all/">All Events</a>
+<br><br>
+Auditoriums UI <a href="/auditoriums/all/">All Auditoriums</a>
