@@ -138,8 +138,8 @@ public class BookingServiceImpl implements BookingService {
         }
 
         List<Ticket> bookedTickets = bookingDAO.getTickets(ticket.getEvent());
-        boolean seatsAreAlreadyBooked = bookedTickets.stream().filter(bookedTicket -> ticket.getSeatsList().stream().filter(
-                bookedTicket.getSeatsList() :: contains).findAny().isPresent()).findAny().isPresent();
+        boolean seatsAreAlreadyBooked = bookedTickets.stream().anyMatch(bookedTicket -> ticket.getSeatsList().stream().anyMatch(
+                bookedTicket.getSeatsList() :: contains));
 
         if (!seatsAreAlreadyBooked)
             bookingDAO.create(user, ticket);
@@ -153,6 +153,7 @@ public class BookingServiceImpl implements BookingService {
     public List<Ticket> getTicketsForEvent(String event, String auditoriumName, LocalDateTime date) {
         final Auditorium auditorium = auditoriumService.getByName(auditoriumName);
         final Event foundEvent = eventService.getEvent(event, auditorium, date);
+
         return bookingDAO.getTickets(foundEvent);
     }
 }
