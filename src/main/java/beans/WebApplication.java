@@ -65,9 +65,6 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
         Event event1 = eventService.create(
                 new Event(eventName, Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(9, 0, 0)),
                         blueHall));
-        System.out.println("-------------------------------");
-        System.out.println(eventService.getEvent(eventName,blueHall,LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(9, 0, 0))).toString());
-
         eventService.create(new Event(eventName, Rate.HIGH, 60, dateOfEvent, blueHall));
         Event event2 = eventService.create(
                 new Event(eventName, Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)),
@@ -105,10 +102,6 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
                         event.getAuditorium().getName(),
                         event.getDateTime(), seats3,
                         userByEmail)));
-
-        System.out.println(bookingService.getTicketsForEvent(event.getName(),event.getAuditorium().getName(),event.getDateTime()));
-
-
     }
 
 }

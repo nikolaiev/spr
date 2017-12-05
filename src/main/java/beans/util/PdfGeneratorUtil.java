@@ -44,7 +44,7 @@ public class PdfGeneratorUtil {
 
             StringWriter output = new StringWriter();
             temp.process(map, output);
-            System.out.println(output.toString());
+            //System.out.println(output.toString());
 
             renderer.setDocumentFromString(output.toString());
             renderer.layout();
