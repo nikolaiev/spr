@@ -49,7 +49,6 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
 
         String email = "dmitriy.vbabichev@gmail.com";
         String name = "Dmytro Babichev";
-        String eventName = "The revenant";
         String auditoriumName = "Blue hall";
         Auditorium blueHall = auditoriumService.getByName(auditoriumName);
         Auditorium yellowHall = auditoriumService.getByName("Yellow hall");
@@ -62,22 +61,26 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
         User userByEmail = userService.getUserByEmail(email);
         userService.getUsersByName(name).forEach(System.out::println);
 
-        Event event1 = eventService.create(
-                new Event(eventName, Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(9, 0, 0)),
-                        blueHall));
-        eventService.create(new Event(eventName, Rate.HIGH, 60, dateOfEvent, blueHall));
-        Event event2 = eventService.create(
-                new Event(eventName, Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)),
+        eventService.create(
+                new Event("The revenant", Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(9, 0, 0)),
                         blueHall));
         eventService.create(
-                new Event(eventName, Rate.HIGH, 90, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)),
+                new Event("Tor", Rate.HIGH, 60, dateOfEvent, blueHall));
+
+        Event event2=eventService.create(
+                new Event("Star Wars", Rate.HIGH, 60, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)),
+                        blueHall));
+        eventService.create(
+                new Event("Star Wars", Rate.HIGH, 90, LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)),
                         redHall));
-        Event event = new Event(eventName, Rate.HIGH, 150,
+
+        Event event = new Event("The revenant", Rate.HIGH, 150,
                 LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(21, 18, 0)), yellowHall);
+
         event = eventService.create(event);
 
         eventService.getAll().forEach(System.out::println);
-        eventService.remove(event2);
+        //eventService.remove(event2);
         eventService.getAll().forEach(System.out::println);
 
         List<Integer> seats = Arrays.asList(23, 24, 25, 26);
@@ -91,13 +94,13 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
 
         bookingService.bookTicket(userByEmail, new Ticket(event, LocalDateTime.now(), seats, userByEmail, ticketPrice));
 
-        bookingService.bookTicket(userByEmail, new Ticket(event, LocalDateTime.now(), seats2, userByEmail,
+        bookingService.bookTicket(userByEmail, new Ticket(event2, LocalDateTime.now(), seats2, userByEmail,
                 bookingService.getTicketPrice(event.getName(),
                         event.getAuditorium().getName(),
                         event.getDateTime(), seats2,
                         userByEmail)));
 
-        bookingService.bookTicket(userByEmail, new Ticket(event, LocalDateTime.now(), seats3, userByEmail,
+        bookingService.bookTicket(userByEmail, new Ticket(event2, LocalDateTime.now(), seats3, userByEmail,
                 bookingService.getTicketPrice(event.getName(),
                         event.getAuditorium().getName(),
                         event.getDateTime(), seats3,

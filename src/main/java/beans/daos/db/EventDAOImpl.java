@@ -4,6 +4,7 @@ import beans.daos.AbstractDAO;
 import beans.daos.EventDAO;
 import beans.models.Auditorium;
 import beans.models.Event;
+import beans.models.Ticket;
 import org.hibernate.Query;
 import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Restrictions;
@@ -88,5 +89,10 @@ public class EventDAOImpl extends AbstractDAO implements EventDAO {
         query.setParameter("auditorium", auditorium);
         query.setParameter("dateTime", date);
         return ((List<Event>) query.list());
+    }
+
+    @Override
+    public Event getById(Long eventId) {
+        return (Event) createBlankCriteria(Event.class).add(Restrictions.eq("id", eventId)).uniqueResult();
     }
 }

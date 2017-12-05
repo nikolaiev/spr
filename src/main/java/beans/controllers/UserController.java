@@ -20,8 +20,8 @@ public class UserController {
     @Autowired
     UserService service;
 
-    @RequestMapping(value = "/id/",method = RequestMethod.GET)
-    public String getUserById(Model model, @RequestParam("id") int id){
+    @RequestMapping(value = "/id/{id}",method = RequestMethod.GET)
+    public String getUserById(Model model, @PathVariable("id") int id){
 
         User user=service.getById(id);
 
@@ -33,7 +33,7 @@ public class UserController {
         return "user/simple_user";
     }
 
-    @RequestMapping(value = "/email/",method = RequestMethod.GET)
+    @RequestMapping(value = "/email",method = RequestMethod.GET)
     public String getUserByEmail(Model model, @RequestParam("email") String email){
 
         User user=service.getUserByEmail(email);
@@ -45,10 +45,19 @@ public class UserController {
         return "user/simple_user";
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String getUsersByName(Model model, @RequestParam("name") String id){
+    @RequestMapping(value = "/name",method = RequestMethod.GET)
+    public String getUsersByName(Model model, @RequestParam("name") String name){
 
-        List<User> users = service.getUsersByName(id);
+        List<User> users = service.getUsersByName(name);
+        model.addAttribute("users",users);
+
+        return "user/users";
+    }
+
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    public String getUsersByName(Model model){
+
+        List<User> users = service.getAll();
         model.addAttribute("users",users);
 
         return "user/users";

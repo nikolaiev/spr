@@ -39,4 +39,6 @@ public interface EventDAO {
             throw new NullPointerException("Events's rate is [null]. Event: [" + event + "]");
         }
     }
+
+    Event getById(Long eventId);
 }

@@ -29,4 +29,6 @@ public interface EventService {
     public List<Event> getNextEvents(LocalDateTime to);
 
     public Event assignAuditorium(Event event, Auditorium auditorium, LocalDateTime date);
+
+    Event getById(Long eventId);
 }

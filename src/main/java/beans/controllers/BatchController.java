@@ -30,7 +30,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Controller
-@RequestMapping("/batch/")
+@RequestMapping("/batch")
 public class BatchController {
     @Autowired
     UserService userService;
@@ -44,7 +44,12 @@ public class BatchController {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 
-    @RequestMapping(value = "/users/",method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
+    public String batchUsersView(){
+        return "batch/upload_batch";
+    }
+
+    @RequestMapping(value = "/users",method = RequestMethod.POST)
     public String batchUsers(@RequestParam("file") MultipartFile file,
                              RedirectAttributes redirectAttributes) throws IOException {
         if (file.isEmpty()) {
@@ -72,7 +77,7 @@ public class BatchController {
     }
 
 
-    @RequestMapping(value = "/events/",method = RequestMethod.POST)
+    @RequestMapping(value = "/events",method = RequestMethod.POST)
     public String batchEvents(@RequestParam("file") MultipartFile file,
                              RedirectAttributes redirectAttributes){
         if (file.isEmpty()) {
@@ -100,7 +105,7 @@ public class BatchController {
 
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
-        return "upload_status";
+        return "batch/upload_status";
     }
 
     private void processBatchUsers(JSONObject jsonObject) throws IOException, ParseException {

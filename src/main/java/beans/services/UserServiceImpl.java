@@ -1,5 +1,6 @@
 package beans.services;
 
+import beans.daos.TicketDAO;
 import beans.daos.UserDAO;
 import beans.models.Ticket;
 import beans.models.User;
@@ -21,10 +22,18 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
+    private final TicketDAO ticketDAO;
 
     @Autowired
-    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO) {
+    public UserServiceImpl(@Qualifier("userDAO") UserDAO userDAO,
+                           @Qualifier("ticketDAO") TicketDAO ticketDAO) {
         this.userDAO = userDAO;
+        this.ticketDAO= ticketDAO;
+    }
+
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+        this.ticketDAO=null;
     }
 
     public User register(User user) {
@@ -48,6 +57,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<Ticket> getBookedTickets() {
-        throw new UnsupportedOperationException("not implemented yet");
+        return ticketDAO.getAll();
+    }
+
+    public List<User> getAll() {
+        return userDAO.getAll();
     }
 }

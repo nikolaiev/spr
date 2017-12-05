@@ -7,6 +7,7 @@ import beans.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,15 +34,16 @@ public class EventController {
         return "event/semple_event";
     }
 
-    @RequestMapping(value = "/name/",method = RequestMethod.GET)
-    public String getByName(Model model, @RequestParam  String name){
+    @RequestMapping(value = "/name/{name}",method = RequestMethod.GET)
+    public String getByName(Model model, @PathVariable String name){
         List<Event> events = service.getByName(name);
         model.addAttribute("events",events);
+        model.addAttribute("commName",name);
 
         return "event/events";
     }
 
-    @RequestMapping(value = "/all/",method = RequestMethod.GET)
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
     public String getAll(Model model){
         List<Event> events = service.getAll();
         model.addAttribute("events",events);
@@ -49,7 +51,7 @@ public class EventController {
         return "event/events";
     }
 
-    @RequestMapping(value = "/period/",method = RequestMethod.GET,params = {"from","to"})
+    @RequestMapping(value = "/period",method = RequestMethod.GET,params = {"from","to"})
     public String getEvent(Model model, @RequestParam LocalDateTime from,@RequestParam LocalDateTime to){
         List<Event> events = service.getForDateRange(from, to);
         model.addAttribute("events",events);

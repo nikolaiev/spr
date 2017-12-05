@@ -1,14 +1,14 @@
 {
   "users":[
     {
-      "email":"test@i.ua",
+      "email":"test123@i.ua",
       "name":"test",
       "birthday":"10-10-1996"
     },
     {
-      "email":"test2@i.ua",
+      "email":"test234@i.ua",
       "name":"test man",
-      "birthday":"11-qq01-1986"
+      "birthday":"11-01-1986"
     }
   ]
 }

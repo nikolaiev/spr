@@ -60,4 +60,9 @@ public class EventServiceImpl implements EventService {
         final Event updatedEvent = new Event(event.getId(), event.getName(), event.getRate(), event.getBasePrice(), date, auditorium);
         return eventDAO.update(updatedEvent);
     }
+
+    @Override
+    public Event getById(Long eventId) {
+        return eventDAO.getById(eventId);
+    }
 }

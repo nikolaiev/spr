@@ -100,6 +100,11 @@ public class InMemoryEventDAO implements EventDAO {
         return filteredByAuditorium.collect(Collectors.toList());
     }
 
+    @Override
+    public Event getById(Long eventId) {
+        return null;
+    }
+
     private Event safeUpdate(Event event) {
         EventDAO.validateEvent(event);
         final List<Event> assignedEvents = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
