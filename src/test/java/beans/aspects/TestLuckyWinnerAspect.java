@@ -10,6 +10,7 @@ import beans.daos.mocks.EventDAOMock;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.models.UserRole;
 import beans.services.BookingService;
 import org.junit.After;
 import org.junit.Before;
@@ -75,7 +76,7 @@ public class TestLuckyWinnerAspect {
     @Test
     public void testCalculateDiscount() {
         User user = (User) applicationContext.getBean("testUser1");
-        User discountUser = new User(user.getId(), user.getEmail(), user.getName(), LocalDate.now());
+        User discountUser = new User(user.getId(), user.getEmail(), user.getName(), LocalDate.now(), UserRole.RESGISTERED_USER,"password");
         Ticket ticket1 = (Ticket) applicationContext.getBean("testTicket1");
         bookingService.bookTicket(discountUser,
                                   new Ticket(ticket1.getEvent(), ticket1.getDateTime(), Arrays.asList(5, 6), user, ticket1.getPrice()));

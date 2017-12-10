@@ -6,6 +6,7 @@ import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.User;
+import beans.models.UserRole;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +54,7 @@ public class UserServiceImplTest {
     @Test
     public void testRegister() throws Exception {
         String email = UUID.randomUUID().toString();
-        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now());
+        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now(), UserRole.RESGISTERED_USER,"password");
         long registeredId = userService.register(user).getId();
         assertEquals("User should be the same", userService.getUserByEmail(email), user.withId(registeredId));
     }

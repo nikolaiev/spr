@@ -77,12 +77,12 @@ public class TestBookingServiceConfiguration {
 
     @Bean
     public User testUser1() {
-        return new User(0, "dmitriy.vbabichev@gmail.com", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29));
+        return new User(0, "dmitriy.vbabichev@gmail.com", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29),UserRole.RESGISTERED_USER,"password");
     }
 
     @Bean
     public User testUser2() {
-        return new User(1, "laory@yandex.ru", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29));
+        return new User(1, "laory@yandex.ru", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29),UserRole.RESGISTERED_USER,"password");
     }
 
     @Bean

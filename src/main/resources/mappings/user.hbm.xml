@@ -11,12 +11,22 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="beans.models">
+    <typedef name="user_role" class="beans.models.UserRole">
+        <param name="enumClassName">beans.models.UserRole</param>
+    </typedef>
 
     <class name="User" table="USER">
         <id name="id" column="ID">
             <generator class="identity"/>
         </id>
         <property name="email" column="EMAIL" type="string" unique="true"/>
+        <property name="password" column="password" type="string" unique="false"/>
+
+        <set name="role" lazy="false">
+            <key column="role" not-null="true"/>
+            <element type="user_role"/>
+        </set>
+
         <property name="name" column="NAME" type="string"/>
         <property name="birthday" type="java.time.LocalDate" column="EVENT_DATE"/>
     </class>
