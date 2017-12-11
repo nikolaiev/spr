@@ -2,21 +2,18 @@ package beans.services;
 
 import beans.daos.TicketDAO;
 import beans.daos.UserDAO;
+import beans.models.MyUserPrincipal;
 import beans.models.Ticket;
 import beans.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:30 PM
- */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -63,5 +60,17 @@ public class UserServiceImpl implements UserService {
 
     public List<User> getAll() {
         return userDAO.getAll();
+    }
+
+    /*UserDetailsService*/
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user= getUserByEmail(email);
+
+        if(user==null){
+            throw new UsernameNotFoundException("User with email "+email+" not found");
+        }
+
+        return new MyUserPrincipal(user.getPassword(),user.getEmail(),user.getRoles());
     }
 }

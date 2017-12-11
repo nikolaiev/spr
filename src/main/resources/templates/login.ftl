@@ -5,16 +5,17 @@
     <title>Spring Security Example </title>
 </head>
 <body>
-<#--<div th:if="${param.error}">-->
-    <#--Invalid username and password.-->
-<#--</div>-->
-<#--<div th:if="${param.logout}">-->
-    <#--You have been logged out.-->
-<#--</div>-->
+<#--<#if (request.getParameter("error")?has_content && request.getParameter("error")?lower_case?matches("true"))>-->
+<#if RequestParameters.error??>
+<h1 style="color: #ff0000">Invalid username or password</h1>
+<br>
+</#if>
+
 <form th:action="@{/login}" method="post">
     <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div>Remember Me: <input type="checkbox" name="remember-me" /> </div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
 </body>

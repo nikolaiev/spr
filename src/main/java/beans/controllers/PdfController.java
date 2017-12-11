@@ -12,6 +12,7 @@ import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +42,7 @@ public class PdfController {
     @Autowired
     TicketService ticketService;
 
-
+    @PreAuthorize("hasAuthority('BOOKING_MANAGER')")
     @RequestMapping(value = "/events",method = RequestMethod.GET,produces=MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> getTicketsByEventsPDF(@RequestParam String event,
                                                         @RequestParam String auditorium,

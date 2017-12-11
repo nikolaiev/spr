@@ -1,3 +1,5 @@
+<a href="/logout">logout</a>
+<br>
 <h1>Spring MVC application</h1>
 
 Visit <a href="/swagger-ui.html">SWAGGER</a> page to resolve all available routes.

@@ -22,8 +22,8 @@
         <property name="email" column="EMAIL" type="string" unique="true"/>
         <property name="password" column="password" type="string" unique="false"/>
 
-        <set name="role" lazy="false">
-            <key column="role" not-null="true"/>
+        <set name="roles" lazy="false">
+            <key column="roles" not-null="true"/>
             <element type="user_role"/>
         </set>
 

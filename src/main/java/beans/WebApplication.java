@@ -5,6 +5,7 @@ import beans.aspects.DiscountAspect;
 import beans.aspects.LuckyWinnerAspect;
 import beans.models.*;
 import beans.services.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ViewResolver;
 
@@ -36,6 +38,9 @@ public class WebApplication {
 @Component
 class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         ApplicationContext ctx = contextRefreshedEvent.getApplicationContext();
@@ -56,9 +61,11 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
         LocalDateTime dateOfEvent = LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(15, 45, 0));
 
         userService.register(new User(email, name, LocalDate.now()));
-        userService.register(new User("laory@yandex.ru", name, LocalDate.of(1992, 4, 29)));
+        userService.register(new User("laory@yandex.ru", name, LocalDate.of(1992, 4, 29),UserRole.RESGISTERED_USER,encoder.encode("user")));
+        userService.register(new User("admin@google.com", "Admin Adminov", LocalDate.of(1901, 5, 1),UserRole.BOOKING_MANAGER,encoder.encode("admin")));
 
         User userByEmail = userService.getUserByEmail(email);
+
         userService.getUsersByName(name).forEach(System.out::println);
 
         eventService.create(

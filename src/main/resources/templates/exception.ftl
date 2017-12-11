@@ -1,3 +1,3 @@
-Sorry for inconvenience
+<h1>Sorry for inconvenience</h1>
 <br>
-${message}
+<span style="color:#ff0000">${message}</span>

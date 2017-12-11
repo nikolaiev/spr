@@ -1,5 +1,6 @@
 package beans.exceptions;
 
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,6 +10,13 @@ public class ControllersAdvice{
 
     @ExceptionHandler(MyObjectNotFoundException.class)
     public String showErrorPage(Model model,Exception e){
+        model.addAttribute("message",e.getMessage());
+
+        return "exception";
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public String showAccessDeniedException(Model model, Exception e){
         model.addAttribute("message",e.getMessage());
 
         return "exception";
