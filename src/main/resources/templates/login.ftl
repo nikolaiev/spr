@@ -16,7 +16,17 @@
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div>Remember Me: <input type="checkbox" name="remember-me" /> </div>
+    <br>
     <div><input type="submit" value="Sign In"/></div>
 </form>
+
+<br>
+<pre>
+    Booking manager login : admin@google.com
+    Booking manager pass  : admin
+
+    Simple user login     : laory@yandex.ru
+    Simple user pass      : user
+</pre>
 </body>
 </html>

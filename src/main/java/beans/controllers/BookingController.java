@@ -52,9 +52,7 @@ public class BookingController {
     public String bookTicket(Model model,@RequestParam("user_id") Long userId,
                                            @RequestParam("event_id") Long event_id,
                                            @RequestParam("seats") String seats){
-        //Ticket ticket=ticketService.getTicketById(ticketId);
 
-        //TODO check seats available
         List<Integer> seatsList = Arrays.stream(seats.split(",")).map(String::trim).map(Integer::parseInt).collect(Collectors.toList());
 
         User user=userService.getById(userId);
