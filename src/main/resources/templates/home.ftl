@@ -17,7 +17,7 @@ Get specific filtered tickets <a href="/pdf/events?event=The%20revenant&auditori
 <br><br>
 Users UI <a href="/users/all/">All Users</a>
 <br><br>
-Laory has 500 on his account. Try to buy several times some of tickets in order to make his account empty
+<b>Laory has 500 on his account. Try to buy several times some of tickets in order to make his account empty</b>
 <br>
 Events UI <a href="/events/all/">All Events</a>
 <br><br>
