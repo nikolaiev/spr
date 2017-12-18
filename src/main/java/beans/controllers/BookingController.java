@@ -86,12 +86,13 @@ public class BookingController {
         double totalPrice=event.getTicketPrice()*seatsList.size();
         double balance = userAccount.getBalance();
 
+        //check if enough money
         if(balance <totalPrice){
-            throw  new MyNotEnoughMoneyException("Ticket price is too high.\nUser has only "+ balance +" when ticket(s) costs"+totalPrice);
+            throw  new MyNotEnoughMoneyException("Ticket price is too high.\nUser has only "+ balance +" when ticket(s) costs "+totalPrice);
         }
 
         //gets money from user
-        userAccountService.refill(userId,event.getTicketPrice());
+        userAccountService.withdraw(userId,totalPrice);
 
         Ticket ticket=new Ticket(event,LocalDateTime.now(),seatsList,user,event.getTicketPrice());
         bookingService.bookTicket(user,ticket);

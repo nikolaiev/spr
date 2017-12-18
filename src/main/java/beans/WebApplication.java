@@ -61,7 +61,8 @@ class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
         LocalDateTime dateOfEvent = LocalDateTime.of(LocalDate.of(2016, 2, 5), LocalTime.of(15, 45, 0));
 
         userService.register(new User(email, name, LocalDate.now()));
-        userService.register(new User("laory@yandex.ru", name, LocalDate.of(1992, 4, 29),UserRole.RESGISTERED_USER,encoder.encode("user")));
+        userService.register(new User("laory@yandex.ru", name, LocalDate.of(1992, 4, 29),UserRole.RESGISTERED_USER,encoder.encode("user")),500.0
+        );
         userService.register(new User("admin@google.com", "Admin Adminov", LocalDate.of(1901, 5, 1),UserRole.BOOKING_MANAGER,encoder.encode("admin")));
 
         User userByEmail = userService.getUserByEmail(email);

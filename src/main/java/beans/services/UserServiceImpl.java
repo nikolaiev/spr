@@ -62,6 +62,13 @@ public class UserServiceImpl implements UserService {
         return userDAO.getAll();
     }
 
+    @Override
+    public void register(User user, double balance) {
+        user.setBalance(balance);
+        System.out.println(user);
+        userDAO.create(user);
+    }
+
     /*UserDetailsService*/
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

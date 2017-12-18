@@ -22,4 +22,6 @@ public interface UserService extends UserDetailsService {
     List<Ticket> getBookedTickets();
 
     List<User> getAll();
+
+    void register(User user, double v);
 }

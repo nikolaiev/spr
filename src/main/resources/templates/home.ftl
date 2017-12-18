@@ -17,6 +17,8 @@ Get specific filtered tickets <a href="/pdf/events?event=The%20revenant&auditori
 <br><br>
 Users UI <a href="/users/all/">All Users</a>
 <br><br>
+Laory has 500 on his account. Try to by several times some of tickets in order to make his account empty
+<br>
 Events UI <a href="/events/all/">All Events</a>
 <br><br>
 Auditoriums UI <a href="/auditoriums/all/">All Auditoriums</a>
@@ -26,32 +28,22 @@ Auditoriums UI <a href="/auditoriums/all/">All Auditoriums</a>
 <br>
 
 <pre>
-    1. Configure Spring Security for ticket booking web application - add DelegatingFilterProxy to web.xml
-        - beans.configuration.WebSecurityConfig.java
+    1. Add new entity to the application - UserAccount, it should store the amount of prepaid money user has in the system, which should be used during booking procedure.
+        Add methods for refilling the account to the BookingFacade class.
+        Add DAO and service objects for new entity. Add ticketPrice field to Event entity.
+        - All was done. See UserAccountService, UserAccount, UserAccountDAO
 
 
-    2. Configure access control via security namespace. All application operations should be accessible to users with role RESGISTERED_USER only.
-        - beans.models.MyUserPrincipal
-        - beans.models.UserRole
-        - beans.services.UserServiceImpl
-        - beans.configuration.WebSecurityConfig.java
+    2. Update ticket booking methods to check and withdraw money from user account according to the ticketPrice for particular event.
+        - See BookingController.bookTicket method
 
     Getting booked tickets for particular event should be accessible only to users with role BOOKING_MANAGER.
         - beans.controllers.PdfController method getTicketsByEventsPDF(...)
 
-    Add two new fields to User entity - password and roles. Roles field should contain comma-separated list of user roles. All users in database should have REGISTERED_USER role by default. Create several test users with additional BOOKING_MANAGER role.
-        - beans.models.User
-        - beans.models.UserRole
+    3.  Configure appropriate PlatformTransactionManager implementation in Spring application context.
+        - Was done since 1-st task. See DbSessionFactory.class
 
-    3. Implement form-based login via security namespace, add custom login page, configure DAOAuthenticationProvider and UserDetailsService to load user data from database. Configure logout filter.
-        - beans.configuration.WebSecurityConfig.java DAOAuthenticationProvider
-        - beans.services.UserServiceImpl
-        - resources/templates/login
-
-    4. Configure Remember-Me authentication.
-        - beans.configuration.WebSecurityConfig.java
-        - resources/schema.sql
-
-    5. Implement password encoding during authentication.
-        - beans.configuration.WebSecurityConfig.java PasswordEncoder
+    4.  Make ticket booking methods transactional using Spring declarative transactions management (either xml or annotation based config).
+        - Was done since 1-st task (all repos @Transactional). But were updated @Transactional for some methods.
+        - See BookingController, BookingFacadeController, BookingServiceImplemetation
 </pre>

@@ -21,4 +21,9 @@ public class UserAccountServiceImpl implements UserAccountService {
     public UserAccount refill(long userId, double amount) {
         return userAccountDAO.refill(userId,amount);
     }
+
+    @Override
+    public UserAccount withdraw(long userId, double ticketPrice) {
+        return refill(userId, -ticketPrice);
+    }
 }
