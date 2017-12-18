@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -82,7 +84,7 @@ public class BookingServiceImpl implements BookingService {
                     + dateTime + "]");
         }
 
-        final double baseSeatPrice = event.getBasePrice();
+        final double baseSeatPrice = event.getTicketPrice();
         final double rateMultiplier = event.getRate() == Rate.HIGH ? highRatedPriceMultiplier : defaultRateMultiplier;
         final double seatPrice = baseSeatPrice * rateMultiplier;
         final double vipSeatPrice = vipSeatPriceMultiplier * seatPrice;
@@ -127,7 +129,9 @@ public class BookingServiceImpl implements BookingService {
         });
     }
 
+    /*only one booking process in simple moment*/
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE,propagation = Propagation.REQUIRED)
     public Ticket bookTicket(User user, Ticket ticket) {
         if (Objects.isNull(user)) {
             throw new NullPointerException("User is [null]");

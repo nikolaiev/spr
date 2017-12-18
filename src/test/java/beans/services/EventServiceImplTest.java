@@ -136,7 +136,7 @@ public class EventServiceImplTest {
         Event event1 = (Event) applicationContext.getBean("testEvent1");
         Event foundEvent = getEvent(event1);
         assertEquals("Events should match", event1.getAuditorium(), foundEvent.getAuditorium());
-        assertEquals("Events should match", event1.getBasePrice(), foundEvent.getBasePrice());
+        assertEquals("Events should match", event1.getTicketPrice(), foundEvent.getTicketPrice());
         assertEquals("Events should match", event1.getDateTime(), foundEvent.getDateTime());
         assertEquals("Events should match", event1.getRate(), foundEvent.getRate());
         assertEquals("Events should match", event1.getName(), foundEvent.getName());
@@ -171,7 +171,7 @@ public class EventServiceImplTest {
         eventService.assignAuditorium(event, testEvent.getAuditorium(), testEvent.getDateTime());
         List<Event> after = eventService.getAll();
         before.remove(event);
-        before.add(new Event(event.getId(), event.getName(), event.getRate(), event.getBasePrice(),
+        before.add(new Event(event.getId(), event.getName(), event.getRate(), event.getTicketPrice(),
                              testEvent.getDateTime(), testEvent.getAuditorium()));
         System.out.println("before = " + before);
         System.out.println("after = " + after);

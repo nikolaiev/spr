@@ -2,6 +2,7 @@ package beans.daos.inmemory;
 
 import beans.daos.UserDAO;
 import beans.models.User;
+import beans.models.UserAccount;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

@@ -19,10 +19,12 @@ public class User {
     private LocalDate birthday;
     private Set<UserRole> roles;
     private String    password;
+    private double    balance;
 
     /*Set default roles*/
     {
         roles =new HashSet<UserRole>(){{add(RESGISTERED_USER);}};
+        balance = 0.0;
     }
 
     public User(String email, String name, LocalDate birthday) {

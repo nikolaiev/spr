@@ -22,6 +22,13 @@ public class ControllersAdvice{
         return "exception";
     }
 
+    @ExceptionHandler(MyNotEnoughMoneyException.class)
+    public String showMyNotEnoughMoneyException(Model model, Exception e){
+        model.addAttribute("message",e.getMessage());
+
+        return "exception";
+    }
+
     @ExceptionHandler(Exception.class)
     public String showErrorPageGlobal(Model model,Exception e){
         System.out.println(e.getMessage());

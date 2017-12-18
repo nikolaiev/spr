@@ -9,7 +9,7 @@
 ${event.id} <br>
 ${event.name} <br>
 ${event.rate} <br>
-${event.basePrice} <br>
+${event.ticketPrice} <br>
 ${event.dateTime} <br>
 ${event.auditorium} <br>
 

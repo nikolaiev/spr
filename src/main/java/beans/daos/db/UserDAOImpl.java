@@ -2,7 +2,10 @@ package beans.daos.db;
 
 import beans.daos.AbstractDAO;
 import beans.daos.UserDAO;
+import beans.exceptions.MyObjectNotFoundException;
 import beans.models.User;
+import beans.models.UserAccount;
+import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 

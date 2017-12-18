@@ -1,6 +1,7 @@
 package beans.daos;
 
 import beans.models.User;
+import beans.models.UserAccount;
 
 import java.util.List;
 import java.util.Objects;

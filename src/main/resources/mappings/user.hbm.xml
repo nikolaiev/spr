@@ -21,6 +21,7 @@
         </id>
         <property name="email" column="EMAIL" type="string" unique="true"/>
         <property name="password" column="password" type="string" unique="false"/>
+        <property name="balance" column="balance" type="double" unique="false"/>
 
         <set name="roles" lazy="false">
             <key column="roles" not-null="true"/>

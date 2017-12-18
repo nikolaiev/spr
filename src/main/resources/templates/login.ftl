@@ -12,7 +12,7 @@
 </#if>
 
 <form th:action="@{/login}" method="post">
-    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+    <#--<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>-->
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div>Remember Me: <input type="checkbox" name="remember-me" /> </div>

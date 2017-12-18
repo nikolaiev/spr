@@ -23,7 +23,7 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
-        <property name="basePrice" type="double" column="BASE_PRICE"/>
+        <property name="ticketPrice" type="double" column="BASE_PRICE"/>
         <property name="dateTime" type="java.time.LocalDateTime" column="DATE_TIME"/>
         <many-to-one name="auditorium" class="beans.models.Auditorium" column="AUDITORIUM" fetch="join" lazy="false"/>
     </class>

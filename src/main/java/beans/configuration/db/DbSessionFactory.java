@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -48,9 +49,10 @@ public class DbSessionFactory {
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(org.hibernate.SessionFactory sessionFactory) {
+    public PlatformTransactionManager txManager(org.hibernate.SessionFactory sessionFactory) throws Exception {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
+
         return txManager;
     }
 }

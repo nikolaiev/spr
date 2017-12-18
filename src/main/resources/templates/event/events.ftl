@@ -23,7 +23,7 @@ Table elements are <b>clickable</b>
     <tr>
         <th>name</th>
         <th>rate</th>
-        <th>basePrice</th>
+        <th>ticketPrice</th>
         <th>dateTime</th>
         <th>auditorium</th>
     </tr>
@@ -37,7 +37,7 @@ Table elements are <b>clickable</b>
 
         <td>${event.name} </td>
         <td>${event.rate} </td>
-        <td>${event.basePrice} </td>
+        <td>${event.ticketPrice} </td>
         <td>${event.dateTime} </td>
         <td>${event.auditorium.name} </td>
     </tr>
